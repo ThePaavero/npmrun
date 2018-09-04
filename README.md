@@ -1,4 +1,9 @@
 # Run NPM scripts from local package.json.
+
+![List only](https://github.com/ThePaavero/npmrun/blob/master/screenshot-list.png)
+
+![With prompt](https://github.com/ThePaavero/npmrun/blob/master/screenshot-select.png)
+
 ## Install
 1. Clone this repo and add its directory to your PATH.
 2. Run `npm i`
