@@ -1,9 +1,13 @@
 const fs = require('fs')
+const util = require('util')
 const dir = process.cwd()
 const args = process.argv
 const colors = require('colors')
 const prompt = args[2] === '-p'
 const select = require('select-prompt')
+const spawn = require('child_process').spawn
+
+const npm = (process.platform === "win32" ? "npm.cmd" : "npm")
 
 if (prompt) {
 }
@@ -30,7 +34,16 @@ if (!prompt) {
   select('Select a script to run', options)
     .on('submit', chosen => {
       console.log(chosen)
+      // const command = spawn('npm run ' + chosen)
+      const command = spawn(npm, ['run', chosen])
+      command.on('data', data => {
+        console.log(data.toString())
+      })
+      command.stderr.on('data', data => {
+        console.log('stderr: ' + data.toString())
+      })
+      command.on('exit', code => {
+        console.log('child process exited with code ' + code.toString())
+      })
     })
 }
-
-console.log('\n')
