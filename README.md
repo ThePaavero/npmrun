@@ -9,4 +9,4 @@
 
 ## Notes
 * To just get a list of available scripts, run `npmrun -list`
-* To get an interactive <select> type of list, run `npmrun`
+* To get an interactive <select> type of list, run `npmrun` without any flags
